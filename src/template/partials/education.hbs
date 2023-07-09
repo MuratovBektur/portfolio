@@ -1,0 +1,42 @@
+<section class="education" id="education">
+  <h2 class="heading">
+    Мой
+    <span>трек</span>
+    <span class="animate scroll" style="--i: 1;"></span>
+  </h2>
+  <div class="education-row">
+    {{#each educationList}}
+      <div class="education-column">
+        <h3 class="title">{{this.title}}
+          <span
+            class="animate scroll"
+            style="--i: {{math (math @index '*' 2) '+' 2}};"
+          >
+          </span>
+        </h3>
+
+        <div class="education-box">
+          {{#each this.list}}
+            <div class="education-content">
+              <div class="content">
+                <div class="year"><i class="bx bxs-calendar"></i>
+                  {{this.date}}</div>
+                <h3>{{this.company}}</h3>
+                <p>
+                  {{this.desc}}
+                </p>
+              </div>
+            </div>
+
+          {{/each}}
+          <span
+            class="animate scroll"
+            style="--i: {{math (math @index '*' 2) '+' 3}};"
+          ></span>
+
+        </div>
+
+      </div>
+    {{/each}}
+  </div>
+</section>

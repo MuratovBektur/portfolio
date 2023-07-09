@@ -1,0 +1,199 @@
+.home {
+  display: flex;
+  align-items: center;
+  padding: 0 9%;
+  position: relative;
+  // background: url(../images/home_old-small.png) no-repeat;
+  // background-size: contain;
+  // background-position: right 0% bottom 0%;
+
+  @media (max-width: $breakPoint2) {
+    padding: 0 4%;
+  }
+  // @media (max-width: $breakPoint4) {
+  //   background-position: center;
+  // }
+  @media (max-width: $breakPoint6) {
+    justify-content: center;
+  }
+  &-content {
+    max-width: 66rem;
+
+    @media (max-width: $breakPoint6) {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    & h1 {
+      position: relative;
+      display: inline-block;
+      font-size: 5.6rem;
+      font-weight: 700;
+      line-height: 1.3;
+      @media (max-width: $breakPoint4) {
+        display: flex;
+        flex-direction: column;
+      }
+      @media (max-width: $breakPoint5) {
+        font-size: 5.2rem;
+      }
+      @media (max-width: $breakPoint6) {
+        font-size: 5rem;
+      }
+      & span {
+        color: var(--text-color);
+      }
+    }
+  }
+  & .text-animate {
+    $width: 29.8rem;
+    $backgroundPositionX: calc(#{-$width} - 0.2rem);
+
+    position: relative;
+    width: $width;
+    & h3 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: transparent;
+      -webkit-text-stroke: 0.7px var(--main-color);
+      background-image: linear-gradient(var(--main-color), var(--main-color));
+      background-repeat: no-repeat;
+      -webkit-background-clip: text;
+      background-position: $backgroundPositionX 0;
+      animation: homeBgText 6s linear infinite;
+      animation-delay: 2s;
+
+      @keyframes homeBgText {
+        0%,
+        10%,
+        100% {
+          background-position: $backgroundPositionX 0;
+        }
+        65%,
+        85% {
+          background-position: 0 0;
+        }
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        border-right: 2px solid var(--main-color);
+        z-index: -1;
+        animation: homeCursorText 6s linear infinite;
+        animation-delay: 2s;
+      }
+
+      @keyframes homeCursorText {
+        0%,
+        10%,
+        100% {
+          width: 0;
+        }
+        65%,
+        78%,
+        85% {
+          width: 100%;
+          opacity: 1;
+        }
+        75%,
+        81% {
+          opacity: 0;
+        }
+      }
+    }
+  }
+  & p {
+    position: relative;
+    font-size: 1.6rem;
+    margin: 2rem 0 4rem;
+  }
+  &-sci {
+    position: absolute;
+    bottom: 4rem;
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: $breakPoint4) {
+      width: 160px;
+    }
+    & a {
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: 0.2rem solid var(--main-color);
+      border-radius: 50%;
+      font-size: 20px;
+      color: var(--main-color);
+      z-index: 1;
+      overflow: hidden;
+      transition: 0.5s;
+
+      @media (max-width: $breakPoint4) {
+        width: 38px;
+        height: 38px;
+      }
+
+      &:hover {
+        color: var(--bg-color);
+        &::before {
+          width: 100%;
+        }
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: var(--main-color);
+        z-index: -1;
+        transition: 0.5s;
+      }
+    }
+  }
+  &-img {
+    max-width: 90%;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    &-container {
+      position: absolute;
+      z-index: -2;
+      right: 0;
+      top: 30%;
+      // background: ;
+
+      @media (max-width: $breakPoint3) {
+        top: 0;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  &-imgHover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45%;
+    height: 100%;
+    background: transparent;
+    transition: 0.3s;
+    &:hover {
+      background: var(--bg-color);
+      opacity: 0.8;
+    }
+  }
+}

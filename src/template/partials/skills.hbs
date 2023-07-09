@@ -1,0 +1,39 @@
+<section class="skills" id="skills">
+  <h2 class="heading">
+    Мои
+    <span>Скиллы</span>
+    <span class="animate scroll" style="--i: 1;"></span>
+  </h2>
+  <div class="skills-row">
+    {{#each skillList}}
+      <div class="skills-column">
+        <h3 class="title">
+          {{this.title}}
+          <span
+            class="animate scroll"
+            style="--i: {{math (math @index '*' 2) '+' 2}};"
+          >
+          </span>
+        </h3>
+
+        <div class="skills-box">
+          <div class="skills-content">
+            {{#each this.list}}
+              <div class="progress">
+                <h3>{{this.skillTitle}} <span>{{this.progress}}%</span></h3>
+                <div class="bar">
+                  <span style="width: {{this.progress}}%;"></span>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+          <span
+            class="animate scroll"
+            style="--i: {{math (math @index '*' 2) '+' 3}};"
+          >
+          </span>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</section>

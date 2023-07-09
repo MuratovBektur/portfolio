@@ -18,11 +18,11 @@ const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("header nav a");
 
 window.onscroll = () => {
-  const header = document.querySelector("header");
+  const headerContainer = document.querySelector(".header-container");
   const footer = document.querySelector("footer");
   const headerHeight = 100;
   // sticky header
-  header.classList.toggle("sticky", window.scrollY > headerHeight);
+  headerContainer.classList.toggle("sticky", window.scrollY > headerHeight);
 
   // remove toggle icon and navbar when click navbar links (scroll)
   menuIcon.classList.remove("bx-x");

@@ -1,25 +1,36 @@
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
   padding: 2rem 9%;
   background: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 100;
   transition: 0.3s;
-  @media (max-width: $breakPoint2) {
+  max-width: $sectionMaxWidth;
+  margin: auto;
+
+  @media (min-width: 1920px) {
+    $py: 173px;
+
+    padding-left: $py;
+    padding-right: $py;
+  }
+
+  @media (max-width: $breakPoint3) {
     padding: 2rem 4%;
   }
-  @media (max-width: $breakPoint3) {
-    background: var(--bg-color);
+  &-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    @media (max-width: $breakPoint3) {
+      background: var(--bg-color);
+    }
+    &.sticky {
+      background: var(--bg-color);
+    }
   }
-}
-
-.header.sticky {
-  background: var(--bg-color);
 }
 
 .logo {
@@ -44,6 +55,7 @@
     transition-delay: 0.25s;
   }
   & .active-nav {
+    display: none;
     position: absolute;
     top: 0;
     left: -100%;
@@ -54,6 +66,9 @@
     z-index: -1;
     transition: 0.25s ease;
     transition-delay: 0s;
+    @media (max-width: $breakPoint3) {
+      display: inline;
+    }
   }
   &.active {
     transition-delay: 0s;

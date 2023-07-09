@@ -4,13 +4,18 @@
   align-items: center;
   flex-wrap: wrap;
   padding: 2rem 9%;
-  background: var(--second-bg-color);
+  max-width: $sectionMaxWidth;
+  margin: auto;
 
   @media (max-width: $breakPoint2) {
     padding: 2rem 4%;
   }
   @media (max-width: $breakPoint5) {
     flex-direction: column-reverse;
+  }
+
+  &-container {
+    background: var(--second-bg-color);
   }
   &-text,
   &-iconTop {

@@ -10,6 +10,18 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./client:/app
+  server:
+    env_file: .dev.env
+    environment: 
+      - NODE_ENV=dev
+    build:
+      context: server
+      dockerfile: Dockerfile_dev
+    expose:
+      - 5000
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./server:/app
   nginx:
     image: nginx:1
     restart: "no"
@@ -17,6 +29,7 @@ services:
       - 3000:80
     depends_on:
       - client
+      - server
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./nginx/dev:/etc/nginx/conf.d

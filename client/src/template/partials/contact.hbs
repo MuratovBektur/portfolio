@@ -9,11 +9,16 @@
     <form>
       <div class="input-box">
         <div class="input-field">
-          <input type="text" placeholder="Ваше имя" required />
+          <input
+            name="fullNameInput"
+            type="text"
+            placeholder="Ваше имя"
+            required
+          />
           <span class="focus"></span>
         </div>
         <div class="input-field">
-          <input type="email" placeholder="Email" required />
+          <input name="emailInput" type="email" placeholder="Email" required />
           <span class="focus"></span>
         </div>
         <span class="animate scroll" style="--i: 2;"></span>
@@ -21,11 +26,21 @@
 
       <div class="input-box">
         <div class="input-field">
-          <input type="number" placeholder="Номер телефона" required />
+          <input
+            name="phoneNumberInput"
+            type="number"
+            placeholder="Номер телефона"
+            required
+          />
           <span class="focus"></span>
         </div>
         <div class="input-field">
-          <input type="text" placeholder="Тема сообщения" required />
+          <input
+            name="subjectInput"
+            type="text"
+            placeholder="Тема сообщения"
+            required
+          />
           <span class="focus"></span>
         </div>
         <span class="animate scroll" style="--i: 3;"></span>
@@ -33,7 +48,7 @@
 
       <div class="textarea-field">
         <textarea
-          name=""
+          name="msgInput"
           id=""
           cols="30"
           rows="10"

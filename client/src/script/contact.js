@@ -12,11 +12,22 @@ const contactSuccessModalText = document.querySelector(
   ".contact-success-modal-text"
 );
 
+function validateEmail(email) {
+  return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+}
+
 submitBtn.onclick = async function (e) {
   let isValidForm = true;
   for (let i = 0; i < formElems.length; i++) {
-    if (formElems[i].value === "" && formElems[i].hasAttribute("required")) {
+    const formElem = formElems[i];
+    const isEmail = formElem.type === "email";
+    if (isEmail && !validateEmail(formElem.value)) {
       isValidForm = false;
+      break;
+    }
+    if (formElem.value === "" && formElem.hasAttribute("required")) {
+      isValidForm = false;
+      break;
     }
   }
   if (isValidForm) {
@@ -34,10 +45,36 @@ submitBtn.onclick = async function (e) {
 };
 
 async function sendRequest() {
-  const url = "https://jsonplaceholder.typicode.com/todos/1";
+  const url = "/api/send-msg";
+  // prettier-ignore
+  const fullName = document.querySelector(".contact form input[name='fullNameInput']").value;
+  // prettier-ignore
+  const email = document.querySelector(".contact form input[name='emailInput']").value;
+  // prettier-ignore
+  const phoneNumber = document.querySelector(".contact form input[name='phoneNumberInput']").value;
+  // prettier-ignore
+  const subject = document.querySelector(".contact form input[name='subjectInput']").value;
+  // prettier-ignore
+  const msg = document.querySelector(".contact form textarea[name='msgInput']").value;
+
   const response = await fetch(url, {
-    method: "GET",
+    method: "POST",
+    mode: "cors", // no-cors, *cors, same-origin
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "same-origin", // include, *same-origin, omit
+    headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: JSON.stringify({
+      fullName,
+      email,
+      phoneNumber,
+      subject,
+      msg,
+    }),
   });
+
   if (!response.ok) throw new Error("Something went wrong");
 }
 

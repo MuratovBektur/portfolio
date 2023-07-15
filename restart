@@ -1,0 +1,11 @@
+git pull;
+
+cd client;
+source ./build.sh;
+cd ..;
+
+export COMPOSE_PROJECT_NAME="portfolio_prod"
+
+docker compose down -v;
+docker compose up -d --build;
+docker compose logs -f --tail=100;

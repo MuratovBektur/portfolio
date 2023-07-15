@@ -1,0 +1,7 @@
+git pull;
+
+export COMPOSE_PROJECT_NAME="portfolio_dev"
+
+docker compose -f docker-compose.dev.yml down -v;
+docker compose -f docker-compose.dev.yml up -d --build;
+docker compose -f docker-compose.dev.yml logs -f --tail=100;

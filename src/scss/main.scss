@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
 // @import "normalize.scss";
 @import "_variables.scss";
 
@@ -8,6 +8,7 @@
 @import "education.scss";
 @import "skills.scss";
 @import "contact.scss";
+@import "contact-success-modal.scss";
 @import "footer.scss";
 
 * {
@@ -21,7 +22,7 @@
   border: none;
   outline: none;
   scroll-behavior: smooth;
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
 
   /* scrollbar style */
   /* Works on Firefox */
@@ -41,6 +42,14 @@
     border-radius: 20px; /* roundness of the scroll thumb */
     border: 3px solid $scrollTrackBGColor; /* creates padding around scroll thumb */
   }
+}
+
+// remove arrows in input type number
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
 :root {

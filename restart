@@ -1,11 +1,14 @@
 git pull;
 
+# получем имя докер композера 
+# (либо docker compose либо docker-compose)
+# по которому можно обращятся
+source docker-compose-name.sh;
+
 cd client;
 source ./build.sh;
 cd ..;
 
-export COMPOSE_PROJECT_NAME="portfolio_prod"
-
-docker compose down -v;
-docker compose up -d --build;
-docker compose logs -f --tail=100;
+"${DOCKER_COMPOSE[@]}" down -v;
+"${DOCKER_COMPOSE[@]}" up -d --build;
+"${DOCKER_COMPOSE[@]}" logs -f --tail=100;

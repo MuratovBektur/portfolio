@@ -1,7 +1,11 @@
 git pull;
 
-export COMPOSE_PROJECT_NAME="portfolio_dev"
+# получем имя докер композера 
+# (либо docker compose либо docker-compose)
+# по которому можно обращятся
+source docker-compose-name.sh;
 
-docker compose -f docker-compose.dev.yml down -v;
-docker compose -f docker-compose.dev.yml up -d --build;
-docker compose -f docker-compose.dev.yml logs -f --tail=100;
+
+"${DOCKER_COMPOSE[@]}" -f docker-compose.dev.yml down -v;
+"${DOCKER_COMPOSE[@]}" -f docker-compose.dev.yml up -d --build;
+"${DOCKER_COMPOSE[@]}" -f docker-compose.dev.yml logs -f --tail=100;

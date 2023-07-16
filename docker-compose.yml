@@ -3,7 +3,7 @@ version: "3.9"
 services:
   server:
     env_file: .env
-    environment: 
+    environment:
       - NODE_ENV=prod
     restart: always
     build: server
@@ -20,8 +20,17 @@ services:
       - server
     ports:
       - 80:80
+      - 443:443
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./nginx/prod:/etc/nginx/conf.d  
+      - ./nginx/prod:/etc/nginx/conf.d
       - ./client/dist:/usr/share/nginx/html
-
+      - ./nginx/certbot/conf:/etc/letsencrypt
+      - ./nginx/certbot/www:/var/www/certbot
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./nginx/certbot/conf:/etc/letsencrypt
+      - ./nginx/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"

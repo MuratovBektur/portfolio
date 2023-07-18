@@ -49,6 +49,9 @@ gulp.task("template", () => {
           "%": lvalue % rvalue,
         }[operator];
       },
+      capitalizeFirstLetter: function (str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      },
     },
   };
 

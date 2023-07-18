@@ -21,7 +21,10 @@
             <div class="skills-content">
               {{#each this.list}}
                 <div class="progress">
-                  <h3>{{this.skillTitle}} <span>{{this.progress}}%</span></h3>
+                  <h3>
+                    {{capitalizeFirstLetter this.skillTitle}}
+                    <span>{{this.progress}}%</span>
+                  </h3>
                   <div class="bar">
                     <span style="width: {{this.progress}}%;"></span>
                   </div>

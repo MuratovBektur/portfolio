@@ -22,6 +22,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./server:/app
+      - /app/node_modules
   nginx:
     image: nginx:1
     restart: "no"

@@ -7,3 +7,13 @@
 6) Run the command "./init-letsencrypt.sh" 
 7) Revert old nginx settings with http 2.0 mode in nginx/prod/config.conf file
 8) Run app with command "./restart"
+
+## Run in production mode
+1) Create .prod.env file if it doesn't exist
+2) Fill .prod.env file as .example.file file (API_KEY and SECRET_KEY variables your can get from https://app.mailjet.com/)
+3) Run app with command "./restart"
+
+## Run in development mode
+1) Create .dev.env file if it doesn't exist
+2) Fill .dev.env file as .example.file file (API_KEY and SECRET_KEY variables your can get from https://app.mailjet.com/)
+3) Run app with command "./restart-dev"

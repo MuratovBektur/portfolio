@@ -34,6 +34,7 @@ submitBtn.onclick = async function (e) {
     e.preventDefault();
     try {
       await sendRequest();
+      contactSuccessModalText.style.color = "";
       contactSuccessModalText.innerHTML = "Ваше сообщение отправлено!";
     } catch {
       contactSuccessModalText.style.color = "tomato";

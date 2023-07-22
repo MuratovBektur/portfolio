@@ -12,7 +12,7 @@ function isObject(obj) {
 
 app.post("/send-msg", async (req, res) => {
   const body = req.body;
-  console.log("body", body);
+
   const bodyFieldList = [
     {
       field: "fullName",

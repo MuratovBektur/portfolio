@@ -1,29 +1,34 @@
-const nodemailer = require("nodemailer");
-
 class MailService {
-  constructor() {
-    // https://www.freecodecamp.org/news/use-nodemailer-to-send-emails-from-your-node-js-server/
-    this.transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        type: "OAuth2",
-        user: process.env.MAIL_USERNAME,
-        pass: process.env.MAIL_PASSWORD,
-        clientId: process.env.OAUTH_CLIENTID,
-        clientSecret: process.env.OAUTH_CLIENT_SECRET,
-        refreshToken: process.env.OAUTH_REFRESH_TOKEN,
-      },
-    });
-  }
   async send(msg) {
-    const info = await this.transporter.sendMail({
-      from: `"Hi Umen" <${process.env.MAIL_USERNAME}>`, // sender address
-      to: process.env.RECIPIENT_EMAIL, // list of receivers
-      subject: "Новое сообщение", // Subject line
-      html: msg, // html body
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.set(
+      "Authorization",
+      "Basic " + btoa(process.env.API_KEY + ":" + process.env.SECRET_KEY)
+    );
+
+    const data = JSON.stringify({
+      Messages: [
+        {
+          From: {
+            Email: process.env.SENDER_EMAIL,
+            Name: process.env.SENDER_EMAIL_NAME,
+          },
+          To: [{ Email: process.env.RECIPIENT_EMAIL }],
+          Subject: "New Message From Your Site",
+          TextPart: msg,
+          HTMLPart: msg,
+        },
+      ],
     });
 
-    return info.messageId.toString();
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: data,
+    };
+
+    const response = await fetch("https://api.mailjet.com/v3.1/send", requestOptions)
   }
 }
 

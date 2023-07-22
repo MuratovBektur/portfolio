@@ -5,6 +5,7 @@ git pull;
 # по которому можно обращятся
 source docker-compose-name.sh;
 
+cat .dev.env > .env;
 
 "${DOCKER_COMPOSE[@]}" -f docker-compose.dev.yml down -v;
 "${DOCKER_COMPOSE[@]}" -f docker-compose.dev.yml up -d --build;

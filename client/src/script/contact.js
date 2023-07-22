@@ -37,8 +37,20 @@ submitBtn.onclick = async function (e) {
       contactSuccessModalText.style.color = "";
       contactSuccessModalText.innerHTML = "Ваше сообщение отправлено!";
     } catch {
-      contactSuccessModalText.style.color = "tomato";
-      contactSuccessModalText.innerHTML = "Что-то пошло не так";
+      contactSuccessModalText.innerHTML = `
+      <div>
+        <h2 align="center" style="color: tomato; padding-bottom: 20px;">Что-то пошло не так</h2>
+        <div>
+          Все почтальоны, кажется, заняты. Вы можете связаться со мной в телеграмм
+          <a
+            href="https://t.me/Volodikova_E"
+            target="_blank"
+            style="color: var(--main-color); text-decoration: underline;"
+          >
+            @Volodikova_E
+          </a>
+        </div>
+      </div>`;
     } finally {
       contactSuccessModal.style.display = null;
     }

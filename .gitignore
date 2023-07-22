@@ -4,3 +4,4 @@ nginx/certbot
 postgresql/
 
 *.env
+!.example.env

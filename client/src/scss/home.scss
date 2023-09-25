@@ -121,6 +121,11 @@
     position: relative;
     font-size: 1.6rem;
     margin: 2rem 0 4rem;
+
+    @media (max-width: $breakPoint4) {
+      color: var(--main-color);
+      font-weight: 500;
+    }
   }
 
   &-sci {
